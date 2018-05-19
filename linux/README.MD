@@ -16,7 +16,7 @@ cd iotop-0.6
 python setup.py build
 python setup.py install
 
-### 查看磁盘IO命令
+## 查看磁盘IO命令
 iostat -d -x /dev/sda3 2
 
 iostat -d -k 1 10         #查看TPS和吞吐量信息(磁盘读写速度单位为KB)
