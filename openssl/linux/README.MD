@@ -6,6 +6,12 @@ make depend
 make
 make install
 
+## 拷贝openssl库
+cp /usr/local/openssl/lib/libssl.so.1.0.0 /usr/lib/
+cp /usr/local/openssl/lib/libcrypto.so.1.0.0 /usr/lib/
+cp /usr/local/openssl/lib/libssl.so.1.0.0 /usr/lib64/
+cp /usr/local/openssl/lib/libcrypto.so.1.0.0 /usr/lib64/
+
 ## OpenSSL生成证书
 openssl genrsa -out privtkey.pem 1024/2038
 openssl genrsa -des3 -out privtkey.pem 1024/2048
