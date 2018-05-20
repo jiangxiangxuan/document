@@ -24,16 +24,14 @@ make clean
 make distclean  
 
 ## 安装scons
-tar -xzvf scons-3.0.1.tar.gz  
-cd scons-3.0.1  
-python setup.py install  
+见scons安装  
 
 ## 安装boost
 见boost安装  
 
 ## 安装mongodb
 下载mongodb:wget https://fastdl.mongodb.org/src/mongodb-src-r3.6.4.tar.gz?_ga=2.37127072.1648078642.1526802035-698304878.1526802035  
-tar -zxf mongodb-src-r3.6.3.tar.gz  
-cd mongodb-src-r3.6.3  
+tar -zxf mongodb-src-r3.6.4.tar.gz  
+cd mongodb-src-r3.6.4  
 scons all  
 scons --prefix=/usr/local/mongodb --full install  
