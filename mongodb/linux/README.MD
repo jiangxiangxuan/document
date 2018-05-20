@@ -29,13 +29,10 @@ cd scons-3.0.1
 python setup.py install  
 
 ## 安装boost
-tar xzf boost_1_66_0.tar.gz  
-cd boost_1_66_0  
-./bootstrap.sh --with-libraries=system,filesystem,log,thread --with-toolset=gcc  
-./b2 toolset=gcc cxxflags="-std=c++11"  
-./b2 install --prefix=/usr/local/boost  
+见boost安装 
 
 ## 安装mongodb
+下载mongodb:wget https://fastdl.mongodb.org/src/mongodb-src-r3.6.4.tar.gz?_ga=2.37127072.1648078642.1526802035-698304878.1526802035
 tar -zxf mongodb-src-r3.6.3.tar.gz  
 cd mongodb-src-r3.6.3  
 scons all  

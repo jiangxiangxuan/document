@@ -10,7 +10,11 @@ export CPPFLAGS="-P"
 make  
 make install  
 
+## 安装boost
+见boost安装 
+
 ## 安装mysql
+下载mysql:wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11.tar.gz
 mkdir -p /usr/local/mysql   
 mkdir -p /usr/local/mysql/data  
 mkdir /var/run/mariadb/  
