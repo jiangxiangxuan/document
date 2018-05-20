@@ -1,82 +1,82 @@
 # 安装mysql
-yum install ncurses-devel
-yum install libaio
+yum install ncurses-devel  
+yum install libaio  
 
 ## 安装ncurses
-tar -xzvf ncurses-6.0.tar.gz
-cd ncurses-6.0
-export CPPFLAGS="-P" 
-./configure --with-shared --without-debug --without-ada --enable-overwrite  
-make
-make install
+tar -xzvf ncurses-6.0.tar.gz  
+cd ncurses-6.0  
+export CPPFLAGS="-P"   
+./configure --with-shared --without-debug --without-ada --enable-overwrite    
+make  
+make install  
 
 ## 安装mysql
-mkdir -p /usr/local/mysql 
-mkdir -p /usr/local/mysql/data
-mkdir /var/run/mariadb/
-touch /var/log/mariadb/mariadb.log
-groupadd mysql
-useradd -r -g mysql mysql
-chown -R mysql:mysql /var/run/mariadb/
-chown -R mysql:mysql /var/log/mariadb/
-tar -zxv -f mysql-8.0.11.tar.gz
-cd mysql-8.0.11
-cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/usr/local/mysql/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/boost
+mkdir -p /usr/local/mysql   
+mkdir -p /usr/local/mysql/data  
+mkdir /var/run/mariadb/  
+touch /var/log/mariadb/mariadb.log  
+groupadd mysql  
+useradd -r -g mysql mysql  
+chown -R mysql:mysql /var/run/mariadb/  
+chown -R mysql:mysql /var/log/mariadb/  
+tar -zxv -f mysql-8.0.11.tar.gz  
+cd mysql-8.0.11  
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/usr/local/mysql/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/boost  
 
 ### 安装mysql参数说明： 
--DCMAKE_INSTALL_PREFIX=/usr/local/mysql //安装目录 
--DINSTALL_DATADIR=/usr/local/mysql/data //数据库存放目录 
--DDEFAULT_CHARSET=utf8 　　　　//使用utf8字符 
--DDEFAULT_COLLATION=utf8_general_ci //校验字符 
--DEXTRA_CHARSETS=all 　　　　//安装所有扩展字符集 
--DENABLED_LOCAL_INFILE=1 　　 //允许从本地导入数据
-make
-make install
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql //安装目录   
+-DINSTALL_DATADIR=/usr/local/mysql/data //数据库存放目录   
+-DDEFAULT_CHARSET=utf8 　　　　//使用utf8字符   
+-DDEFAULT_COLLATION=utf8_general_ci //校验字符   
+-DEXTRA_CHARSETS=all 　　　　//安装所有扩展字符集   
+-DENABLED_LOCAL_INFILE=1 　　 //允许从本地导入数据  
+make  
+make install  
 
 ### mysql配置
-chown -R mysql:mysql /usr/local/mysql
-vim /usr/local/mysql/etc/my.cnf
+chown -R mysql:mysql /usr/local/mysql  
+vim /usr/local/mysql/etc/my.cnf  
 
-[client]
-port = 3306
-socket = /tmp/mysql.sock
+[client]  
+port = 3306  
+socket = /tmp/mysql.sock  
 
-[mysqld]
-character_set_server=utf8
-init_connect='SET NAMES utf8'
-basedir=/usr/local/mysql
-datadir=/usr/local/mysql/data
-socket=/tmp/mysql.sock
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
-lower_case_table_names = 1 #不区分大小写
-sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-max_connections=5000
-default-time_zone = '+8:00'
+[mysqld]  
+character_set_server=utf8  
+init_connect='SET NAMES utf8'  
+basedir=/usr/local/mysql  
+datadir=/usr/local/mysql/data  
+socket=/tmp/mysql.sock  
+log-error=/var/log/mysqld.log  
+pid-file=/var/run/mysqld/mysqld.pid  
+lower_case_table_names = 1 #不区分大小写  
+sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION  
+max_connections=5000  
+default-time_zone = '+8:00'  
 
 
 ### 初始化mysql数据库
-yum install libaio
-vim /var/log/mysqld.log
-:wq
-chmod 777 /var/log/mysqld.log
-chown mysql:mysql /var/log/mysqld.log
-/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US
+yum install libaio  
+vim /var/log/mysqld.log  
+:wq  
+chmod 777 /var/log/mysqld.log  
+chown mysql:mysql /var/log/mysqld.log  
+/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US  
 
 ### 查看mysql初始密码
-cat /var/log/mysqld.log
-最后一行：root@localhost: 这里就是初始密码
+cat /var/log/mysqld.log  
+最后一行：root@localhost: 这里就是初始密码  
 
 ### mysql环境变量 
-vim /etc/profile
-export PATH=/usr/local/mysql/bin:$PATH
-source /etc/profile
+vim /etc/profile  
+export PATH=/usr/local/mysql/bin:$PATH  
+source /etc/profile  
 
 ### 启动mysql服务
-cd /usr/local/mysql
-./bin/mysqld_safe --user=mysql &
+cd /usr/local/mysql  
+./bin/mysqld_safe --user=mysql &  
 
 ### 修改mysql初始密码
-set password=password('新密码');
-grant all privileges on *.* to '新用户名'@'%' identified by '新密码';
-flush privileges;
+set password=password('新密码');  
+grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
+flush privileges;  
