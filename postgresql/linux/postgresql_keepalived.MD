@@ -56,4 +56,4 @@
 ## keepalived安装
 	见keepalived安装
 ## keepalived配置	
-	见keepalived_postgresql_config目录
+	见postgresql_keepalived_config目录
