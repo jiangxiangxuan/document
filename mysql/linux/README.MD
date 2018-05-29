@@ -81,6 +81,9 @@ cd /usr/local/mysql
 ./bin/mysqld_safe --user=mysql &  
 
 ### 修改mysql初始密码
+./bin/mysqld_safe --user=mysql  --skip-grant-tables --skip-networking &  
+use mysql;  
 set password=password('新密码');  
 grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';  
 flush privileges;  
