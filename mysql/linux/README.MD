@@ -78,10 +78,10 @@ source /etc/profile
 
 ### 启动mysql服务
 cd /usr/local/mysql  
-./bin/mysqld_safe --user=mysql --init-file=../etc/my.cnf &  
+./bin/mysqld_safe --user=mysql --init-file=./etc/my.cnf &  
 
 ### 修改mysql初始密码
-./bin/mysqld_safe --user=mysql  --skip-grant-tables --skip-networking &  
+./bin/mysqld_safe --user=mysql  --skip-grant-tables --skip-networking --init-file=./etc/my.cnf &  
 use mysql;  
 set password=password('新密码');  
 grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
