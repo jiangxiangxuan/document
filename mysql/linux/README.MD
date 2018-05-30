@@ -78,7 +78,7 @@ source /etc/profile
 
 ### 启动mysql服务
 cd /usr/local/mysql  
-./bin/mysqld_safe --init-file=./etc/my.cnf --user=mysql &  
+./bin/mysqld_safe --defaults-file=./etc/my.cnf --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --user=mysql &  
 
 ### 修改mysql初始密码
