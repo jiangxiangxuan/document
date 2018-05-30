@@ -19,11 +19,13 @@ mkdir -p /usr/local/mysql
 mkdir -p /usr/local/mysql/data  
 mkdir /var/run/mariadb/  
 mkdir /var/log/mariadb/  
+mkdir /usr/local/mysql/logs  
 touch /var/log/mariadb/mariadb.log  
 groupadd mysql  
 useradd -r -g mysql mysql  
 chown -R mysql:mysql /var/run/mariadb/  
 chown -R mysql:mysql /var/log/mariadb/  
+chown -R mysql:mysql /usr/local/mysql/logs  
 tar -zxv -f mysql-8.0.11.tar.gz  
 cd mysql-8.0.11  
 cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/usr/local/mysql/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/boost  
