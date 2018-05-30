@@ -57,7 +57,7 @@ socket=/usr/local/mysql/logs/mysql.sock
 log-error=/usr/local/mysql/logs/mysqld.log  
 pid-file=/usr/local/mysql/logs/mysqld.pid  
 lower_case_table_names = 1 #不区分大小写  
-sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION  
+#sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION  
 max_connections=5000  
 default-time_zone = '+8:00'  
 default_authentication_plugin=mysql_native_password  
@@ -82,11 +82,11 @@ source /etc/profile
 
 ### 启动mysql服务
 cd /usr/local/mysql  
-./bin/mysqld_safe --defaults-file=./etc/my.cnf --user=mysql &  
+#./bin/mysqld_safe --defaults-file=./etc/my.cnf --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --user=mysql &  
 
 ### 修改mysql初始密码
-./bin/mysqld_safe --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
+#./bin/mysqld_safe --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 use mysql;  
 set global read_only=0;  
@@ -94,8 +94,8 @@ flush privileges;
 set global read_only=1;  
 flush privileges;  
 
-set password=password('新密码');  
-grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
+#set password=password('新密码');  
+#grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';  
 update user set Host='%' where User='root';  
