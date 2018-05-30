@@ -49,6 +49,7 @@ port = 3306
 socket = /usr/local/mysql/logs/mysql.sock  
 
 [mysqld]  
+port=3306  
 character_set_server=utf8  
 init_connect='SET NAMES utf8'  
 basedir=/usr/local/mysql  
