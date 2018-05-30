@@ -68,6 +68,7 @@ log-slave-updates  # slave将复制事件写进自己的二进制日志
 #auto-increment-increment = 2  #每次递增的步长  
 #auto-increment-offset = 2  #初始值  
 
+### 配置slave中 master 信息
 stop slave;  
 CHANGE MASTER TO MASTER_HOST='192.168.1.110',MASTER_PORT=3306, MASTER_USER='backup', MASTER_PASSWORD='123456', MASTER_CONNECT_RETRY=60, MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=100;  
 start slave;  
