@@ -64,7 +64,7 @@ replicate-ignore-db=information_schema
 relay-log=mysqld-relay-bin  # 开启日志中继  
 log-slave-updates  # slave将复制事件写进自己的二进制日志  
 
-#自增字段奇数递增  
+#自增字段偶数递增  
 #auto-increment-increment = 2  #每次递增的步长  
 #auto-increment-offset = 2  #初始值  
 
