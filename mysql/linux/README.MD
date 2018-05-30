@@ -18,6 +18,7 @@ make install
 mkdir -p /usr/local/mysql   
 mkdir -p /usr/local/mysql/data  
 mkdir /var/run/mariadb/  
+mkdir /var/log/mariadb/  
 touch /var/log/mariadb/mariadb.log  
 groupadd mysql  
 useradd -r -g mysql mysql  
@@ -43,25 +44,26 @@ vim /usr/local/mysql/etc/my.cnf
 
 [client]  
 port = 3306  
-socket = /tmp/mysql.sock  
+socket = /usr/local/mysql/logs/mysql.sock  
 
 [mysqld]  
 character_set_server=utf8  
 init_connect='SET NAMES utf8'  
 basedir=/usr/local/mysql  
 datadir=/usr/local/mysql/data  
-socket=/tmp/mysql.sock  
-log-error=/var/log/mysqld.log  
-pid-file=/var/run/mysqld/mysqld.pid  
+socket=/usr/local/mysql/logs/mysql.sock  
+log-error=/usr/local/mysql/logs/mysqld.log  
+pid-file=/usr/local/mysql/logs/mysqld.pid  
 lower_case_table_names = 1 #不区分大小写  
 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION  
 max_connections=5000  
 default-time_zone = '+8:00'  
+default_authentication_plugin=mysql_native_password  
 
 
 ### 初始化mysql数据库
 yum install libaio  
-vim /var/log/mysqld.log  
+touch /var/log/mysqld.log  
 :wq  
 chmod 777 /var/log/mysqld.log  
 chown mysql:mysql /var/log/mysqld.log  
