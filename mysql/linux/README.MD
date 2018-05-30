@@ -87,6 +87,8 @@ cd /usr/local/mysql
 ### 修改mysql初始密码
 #./bin/mysqld_safe --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
+
+./bin/mysql -h localhost -P 3306 --socket=/usr/local/mysql/mysql.sock -u root -p  
 use mysql;  
 set global read_only=0;  
 flush privileges;  
