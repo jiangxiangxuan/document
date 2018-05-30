@@ -79,8 +79,8 @@ start slave;
 #MASTER_USER='backup', //同步数据库的用户  
 #MASTER_PASSWORD='123456', //同步数据库的密码  
 #MASTER_CONNECT_RETRY=60,  // 如果从服务器发现主服务器断掉，重新连接的时间差(秒)  
-#MASTER_LOG_FILE='mysql-bin.000001', //主服务器二进制日志的文件名(前面要求记住的 File 参数)  
-#MASTER_LOG_POS=100; //日志文件的开始位置(前面要求记住的 Position 参数)  
+#MASTER_LOG_FILE='mysql-bin.000001', //主服务器二进制日志的文件名(master File 参数)  
+#MASTER_LOG_POS=100; //日志文件的开始位置(master Position 参数)  
 
 ### 查看 slave 状态
 show slave status\G;  
