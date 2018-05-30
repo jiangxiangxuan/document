@@ -1,8 +1,8 @@
-# 安装mysql
+# 安装mysql  
 yum install ncurses-devel  
 yum install libaio  
 
-## 安装ncurses
+## 安装ncurses  
 tar -xzvf ncurses-6.0.tar.gz  
 cd ncurses-6.0  
 export CPPFLAGS="-P"   
@@ -10,10 +10,10 @@ export CPPFLAGS="-P"
 make  
 make install  
 
-## 安装boost
+## 安装boost  
 见boost安装  
 
-## 安装mysql
+## 安装mysql  
 下载mysql:wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11.tar.gz  
 mkdir -p /usr/local/mysql   
 mkdir -p /usr/local/mysql/data  
@@ -40,7 +40,7 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql
 make  
 make install  
 
-### mysql配置
+### mysql配置  
 chown -R mysql:mysql /usr/local/mysql  
 vim /usr/local/mysql/etc/my.cnf  
 
@@ -64,28 +64,28 @@ default-time_zone = '+8:00'
 default_authentication_plugin=mysql_native_password  
 
 
-### 初始化mysql数据库
+### 初始化mysql数据库  
 yum install libaio  
 touch /var/log/mysqld.log  
 chmod 777 /var/log/mysqld.log  
 chown mysql:mysql /var/log/mysqld.log  
 /usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US  
 
-### 查看mysql初始密码
+### 查看mysql初始密码  
 cat /var/log/mysqld.log  
 最后一行：root@localhost: 这里就是初始密码  
 
-### mysql环境变量 
+### mysql环境变量  
 vim /etc/profile  
 export PATH=/usr/local/mysql/bin:$PATH  
 source /etc/profile  
 
-### 启动mysql服务
+### 启动mysql服务  
 cd /usr/local/mysql  
 #./bin/mysqld_safe --defaults-file=./etc/my.cnf --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --user=mysql &  
 
-### 修改mysql初始密码
+### 修改mysql初始密码  
 #./bin/mysqld_safe --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 ./bin/mysqld --defaults-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 
