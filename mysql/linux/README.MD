@@ -66,7 +66,6 @@ default_authentication_plugin=mysql_native_password
 ### 初始化mysql数据库
 yum install libaio  
 touch /var/log/mysqld.log  
-:wq  
 chmod 777 /var/log/mysqld.log  
 chown mysql:mysql /var/log/mysqld.log  
 /usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US  
