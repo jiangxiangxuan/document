@@ -82,7 +82,7 @@ cd /usr/local/mysql
 ./bin/mysqld --defaults-file=./etc/my.cnf --user=mysql &  
 
 ### 修改mysql初始密码
-./bin/mysqld_safe  --skip-grant-tables --skip-networking --init-file=./etc/my.cnf --user=mysql &  
+./bin/mysqld_safe --init-file=./etc/my.cnf --skip-grant-tables --skip-networking --user=mysql &  
 use mysql;  
 set password=password('新密码');  
 grant all privileges on *.* to '新用户名'@'%' identified by '新密码';  
