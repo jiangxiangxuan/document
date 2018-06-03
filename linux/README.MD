@@ -2,6 +2,7 @@
 yum install -y lsof  
 yum install -y iptraf  
 yum install -y dstat  
+yum install -y wget
 
 ## 安装sysstat
 tar zxvf sysstat-11.7.2.tar.gz  
