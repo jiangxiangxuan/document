@@ -3,6 +3,11 @@ yum install -y lsof
 yum install -y iptraf  
 yum install -y dstat  
 yum install -y wget
+yum install -y lrzsz  
+
+yum install -y gcc  
+yum install -y gcc-c++ libstdc++-devel  
+yum install -y gdb  
 
 ## 安装sysstat
 tar zxvf sysstat-11.7.2.tar.gz  
