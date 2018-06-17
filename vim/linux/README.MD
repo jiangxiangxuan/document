@@ -20,7 +20,7 @@ cp doc/NERD_tree.txt ~/.vim/doc/
 ## vim配置
 vim ~/.vimrc  
 " NERDTree  
-map<F10> :NERDTreeToggle<CR>  
+map\<F10\> :NERDTreeToggle\<CR\>  
 set tags=tags;/  
 set ts=4  
 set nu  
