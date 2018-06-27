@@ -82,7 +82,20 @@ make install
 make clean  
 make distclean  
 
-## 安装phpize ext
+## 安装mbstring ext
+cd php-7.1.7/ext/mbstring  
+/usr/local/php7.1.7/bin/phpize  
+./configure --with-php-config=/usr/local/php7.1.7/bin/php-config  --with-jpeg-dir=/usr/local/jpeg  --with-png-dir=/usr/local/libpng   --with-freetype-dir=/usr/local/freetype  
+make  
+make install  
+make clean  
+make distclean  
+
+### php配置mbstring
+vim /usr/local/php7.1.7/etc/php.ini  
+extension=mbstring.so   
+
+## 安装phpredis ext
 git clone https://github.com/nicolasff/phpredis  
 git clone https://github.com/phpredis/phpredis.git  
 tar -xzvf phpredis.tar.gz  
@@ -96,7 +109,7 @@ make distclean
 
 ### php配置redis
 vim /usr/local/php7.1.7/etc/php.ini  
-extension="redis.so"  
+extension=redis.so  
 
 ## 安装openssl ext
 cd php-7.1.7/ext/openssl  
