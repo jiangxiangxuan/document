@@ -5,6 +5,7 @@ yum install -y dstat
 yum install -y wget
 yum install -y lrzsz  
 yum install -y autoconf
+yum install -y net-tools.x86_64
 
 yum install -y gcc  
 yum install -y gcc-c++ libstdc++-devel  
