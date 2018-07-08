@@ -24,9 +24,16 @@ cd iotop-0.6
 python setup.py build  
 python setup.py install  
 
-## 查看磁盘IO命令
+### 查看磁盘IO命令
 iostat -d -x /dev/sda3 2  
 iostat -d -k 1 10         #查看TPS和吞吐量信息(磁盘读写速度单位为KB)  
 iostat -d -m 2            #查看TPS和吞吐量信息(磁盘读写速度单位为MB)  
 iostat -d -x -k 1 10      #查看设备使用率（%util）、响应时间(await)  
 iostat -c 1 10            #查看cpu状态  
+
+
+## 安装nmon
+wget http://sourceforge.net/projects/nmon/files/nmon16g_x86.tar.gz  
+tar -xzvf nmon16g_x86.tar.gz  
+mv nmon16g_x86_rhel72 nmon  
+mv nmon /bin/  
