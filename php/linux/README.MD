@@ -62,7 +62,7 @@ cd php-7.1.7
 ./configure --prefix=/usr/local/php7.1.7 --with-config-file-path=/usr/local/php7.1.7/etc --with-apxs2=/usr/local/apache/bin/apxs --with-freetype-dir=/usr/local/freetype  --with-jpeg-dir=/usr/local/jpeg  --with-png-dir=/usr/local/libpng --with-gd=/usr/local/libgd --with-pgsql --with-pdo-pgsql --with-mysqli --with-pdo-mysql --with-mysql=shared,mysqlnd --with-xpm-dir=/usr/lib64/ --enable-inline-optimization --disable-debug  #--with-curl=/usr/local/curl  
 make  
 make install  
-cp /home/soft/php-7.1.7/php.ini-development /usr/local/php7.1.7/etc/php.ini  
+cp php-7.1.7/php.ini-development /usr/local/php7.1.7/etc/php.ini  
 
 ## 安装mysqli ext
 cd php-7.1.7/ext/mysqli  
